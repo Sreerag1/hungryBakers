@@ -18,21 +18,32 @@ body {
 	display: flex;
 	justify-content: center;
 }
+hr {
+	padding: 0px 1em;
+	border: 0.5px solid #3333331f;
+}
 .page-container {
 	width: 80%;
 }
+.header-navigation {
+	display: flex;
+	justify-content: space-between;
+}
+
 .img-container {
-	border: 1px dotted blue;
+	/*border: 1px dotted blue;*/
 	display: inline-block;
 }
 .bread-info{
-	border: 1px dotted blue;
+	/*border: 1px dotted blue;*/
 /*	display: inline-block;*/
 }
 .bread-info a {
 	font-family: BAHNSCHRIFT;
 	text-decoration: none;
 	text-align: center;
+	color: #33333378;
+	font-weight: bold;
 }
 .bread-name {
 	font-family: OhBeloved, sans-serif;
@@ -47,7 +58,7 @@ body {
 
 }
 .bread {
-	border: 1px dotted cyan;
+	/*border: 1px dotted cyan;*/
 	margin-top: -100px;
 }
 .bread.right {
