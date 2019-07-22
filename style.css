@@ -1,6 +1,13 @@
  @font-face { font-family: OhBeloved; src: url('fonts/OhBeloved.ttf'); } 
 @font-face { font-family: BAHNSCHRIFT; src: url('fonts/BAHNSCHRIFT.ttf'); }
 
+.main-container {
+	width: 100%;
+	margin: 0px;
+	display: flex;
+	justify-content: center;	
+	background-color: #1111ab40;
+}
  .shop-name { 
  	font-family: OhBeloved, sans-serif;
  	font-size: 4em;
@@ -15,15 +22,15 @@ img {
 }
 body {
 	margin: 0px;
-	display: flex;
-	justify-content: center;
+	/*background-color: blue;*/
 }
 hr {
 	padding: 0px 1em;
 	border: 0.5px solid #3333331f;
 }
 .page-container {
-	width: 80%;
+	width: 85%;
+	background-color: white;
 }
 /* First navigation*/
 .header-navigation , .header-navigation2{
