@@ -1,5 +1,12 @@
  @font-face { font-family: OhBeloved; src: url('OhBeloved.ttf'); } 
- h1 { font-family: OhBeloved, sans-serif; }
+@font-face { font-family: BAHNSCHRIFT; src: url('BAHNSCHRIFT.ttf'); }
+
+ .shop-name { 
+ 	font-family: OhBeloved, sans-serif;
+ 	font-size: 4em;
+ 	width: 100%;
+ 	text-align: center;
+ }
 
 img {
   max-width: 100%;
@@ -8,7 +15,11 @@ img {
 }
 body {
 	margin: 0px;
-
+	display: flex;
+	justify-content: center;
+}
+.page-container {
+	width: 80%;
 }
 .img-container {
 	border: 1px dotted blue;
@@ -16,39 +27,42 @@ body {
 }
 .bread-info{
 	border: 1px dotted blue;
-	display: inline-block;
-	vertical-align: top;
+/*	display: inline-block;*/
 }
-.page-container {
-	width: 80%;
+.bread-info a {
+	font-family: BAHNSCHRIFT;
+	text-decoration: none;
+	text-align: center;
+}
+.bread-name {
+	font-family: OhBeloved, sans-serif;
+	font-size: 2.5em;
 }
 .breads-container {
 	width: 100%;
 	padding: 20px;
-	
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
 }
 .bread {
 	border: 1px dotted cyan;
-	height: 100px;
-	/*position: absolute;*/
-
+	margin-top: -150px;
+}
+.bread.right {
+	align-self: flex-end;
+}
+.bread:nth-child(2){
+	margin-top: -30px;
+}
+.bread:first-child {
+	margin-top: 0px;
 }
 .bread-inner {
-	/*position: relative;*/
-	display: flex;	
+	display: flex;
 	align-items: center;
-
-}
-.bread-inner.right {
-	  justify-content: flex-end;
-
-}
-.right {
-	float:right;
-}
-.bread:last-child {
-	margin-top: 76px;
 }
 #french-bread {
-	margin-top: -120px;
+	/*margin-top: -120px;*/
 }
