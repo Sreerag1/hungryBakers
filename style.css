@@ -25,11 +25,44 @@ hr {
 .page-container {
 	width: 80%;
 }
-.header-navigation {
+/* First navigation*/
+.header-navigation , .header-navigation2{
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 }
-
+.header-navigation a {
+  text-decoration: none;
+  color: #333333c7;
+  margin: 0px 25px;
+  font-weight: bold;
+  font-family: BAHNSCHRIFT;
+  font-size: 1em;
+}
+.left-nav {
+	display: flex;
+	justify-content: space-around;
+}
+.right-nav {
+	display: flex;	
+}
+/*Second navigation*/
+.header-navigation2 {
+	background-color: #ffc0cba3;
+	  padding: 0px 5px;
+	  margin-top: 15px;
+	  border-radius: 2px;	
+}
+.header-navigation2 a {
+  text-decoration: none;
+  color: #f12ab9;
+  margin: 5px 0px;
+  font-weight: bold;
+  font-family: BAHNSCHRIFT;
+  font-size: 1.2em;
+}
+.header-navigation2 a:hover {
+	color: purple;
+}
 .img-container {
 	/*border: 1px dotted blue;*/
 	display: inline-block;
