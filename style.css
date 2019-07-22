@@ -1,0 +1,54 @@
+ @font-face { font-family: OhBeloved; src: url('OhBeloved.ttf'); } 
+ h1 { font-family: OhBeloved, sans-serif; }
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+body {
+	margin: 0px;
+
+}
+.img-container {
+	border: 1px dotted blue;
+	display: inline-block;
+}
+.bread-info{
+	border: 1px dotted blue;
+	display: inline-block;
+	vertical-align: top;
+}
+.page-container {
+	width: 80%;
+}
+.breads-container {
+	width: 100%;
+	padding: 20px;
+	
+}
+.bread {
+	border: 1px dotted cyan;
+	height: 100px;
+	/*position: absolute;*/
+
+}
+.bread-inner {
+	/*position: relative;*/
+	display: flex;	
+	align-items: center;
+
+}
+.bread-inner.right {
+	  justify-content: flex-end;
+
+}
+.right {
+	float:right;
+}
+.bread:last-child {
+	margin-top: 76px;
+}
+#french-bread {
+	margin-top: -120px;
+}
