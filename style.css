@@ -1,5 +1,5 @@
- @font-face { font-family: OhBeloved; src: url('OhBeloved.ttf'); } 
-@font-face { font-family: BAHNSCHRIFT; src: url('BAHNSCHRIFT.ttf'); }
+ @font-face { font-family: OhBeloved; src: url('fonts/OhBeloved.ttf'); } 
+@font-face { font-family: BAHNSCHRIFT; src: url('fonts/BAHNSCHRIFT.ttf'); }
 
  .shop-name { 
  	font-family: OhBeloved, sans-serif;
@@ -48,13 +48,15 @@ body {
 }
 .bread {
 	border: 1px dotted cyan;
-	margin-top: -150px;
+	margin-top: -100px;
 }
 .bread.right {
 	align-self: flex-end;
+	/*margin-top: -175px;*/
+
 }
 .bread:nth-child(2){
-	margin-top: -30px;
+	/*margin-top: -0px;*/
 }
 .bread:first-child {
 	margin-top: 0px;
@@ -64,5 +66,11 @@ body {
 	align-items: center;
 }
 #french-bread {
-	/*margin-top: -120px;*/
+	margin-top: -60px;
+}
+#garlic-bread {
+	margin-top: -170px;
+}
+#brown-bread {
+	margin-top: -125px;	
 }
