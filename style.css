@@ -8,12 +8,14 @@
 	justify-content: center;	
 	background-color: #1111ab40;
 }
- .shop-name { 
- 	font-family: OhBeloved, sans-serif;
- 	font-size: 4em;
- 	width: 100%;
- 	text-align: center;
- }
+ .shop-name {
+    display: flex;
+    height: 118px;
+    width: 490px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: .5em;
+}
 
 img {
   max-width: 100%;
@@ -25,7 +27,7 @@ body {
 	/*background-color: blue;*/
 }
 hr {
-	margin: .6em 2em;
+	margin: .2em 2em;
 	border: 0.5px solid #3333331f;
 }
 .page-container {
@@ -72,7 +74,7 @@ hr {
   font-size: 1.2em;
 }
 .header-navigation2 a:hover {
-	color: purple;
+	color: white;
 }
 .header-navigation2 a.current-tab {
 	color: purple;
@@ -85,7 +87,7 @@ hr {
 	/*border: 1px dotted blue;*/
 /*	display: inline-block;*/
 }
-.bread-info a {
+.bread-info > div:first-child > a {
 	font-family: bahnscrift;
 	text-decoration: none;
 	text-align: center;
