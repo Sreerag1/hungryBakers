@@ -1,4 +1,4 @@
- @font-face { font-family: OhBeloved; src: url('fonts/OhBeloved.ttf'); } 
+@font-face { font-family: OhBeloved; src: url('fonts/OhBeloved.ttf'); } 
 @font-face { font-family: BAHNSCHRIFT; src: url('fonts/BAHNSCHRIFT.ttf'); }
 
 .main-container {
@@ -29,7 +29,7 @@ hr {
 	border: 0.5px solid #3333331f;
 }
 .page-container {
-	width: 85%;
+	width: 90%;
 	background-color: white;
 }
 /* First navigation*/
@@ -56,7 +56,7 @@ hr {
 .header-navigation2 {
 	background-color: #ffc0cba3;
 	  padding: 0px 5px;
-	  margin-top: 15px;
+	  margin-top: 10px;
 	  border-radius: 2px;	
 }
 .header-navigation2 a {
@@ -68,6 +68,9 @@ hr {
   font-size: 1.2em;
 }
 .header-navigation2 a:hover {
+	color: purple;
+}
+.header-navigation2 a.current-tab {
 	color: purple;
 }
 .img-container {
@@ -85,43 +88,70 @@ hr {
 	color: #33333378;
 	font-weight: bold;
 }
+.bread-info a:hover {
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+}
 .bread-name {
 	font-family: OhBeloved, sans-serif;
 	font-size: 2.5em;
 }
 .breads-container {
 	width: 100%;
-	padding: 20px;
+	/*padding: 3em;*/
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: flex-start;
 
 }
 .bread {
 	/*border: 1px dotted cyan;*/
 	margin-top: -100px;
+	padding: 0px 8em;
 }
 .bread.right {
 	align-self: flex-end;
-	/*margin-top: -175px;*/
-
-}
-.bread:nth-child(2){
-	/*margin-top: -0px;*/
 }
 .bread:first-child {
-	margin-top: 0px;
+	margin-top: 2em;
 }
 .bread-inner {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
+}
+#white-bread  .bread-info {
+	margin-left: -110px;
+}
+#multigrain-bread  .bread-info {
+	margin-right: -30px;
+	align-self: center;
 }
 #french-bread {
-	margin-top: -60px;
+	margin-top: -160px;
+}
+#french-bread .bread-inner {
+	display: flex;
+	align-items: center;
+}
+#french-bread .bread-info {
+    margin-left: -95px;
+    margin-bottom: -45px;
 }
 #garlic-bread {
-	margin-top: -170px;
+	margin-top: -130px;
+	padding: 0px 5em;
+}
+#garlic-bread .bread-info {
+	margin-top: 40px;
+    margin-right: -78px;
 }
 #brown-bread {
-	margin-top: -125px;	
+	margin-top: -150px;
+}
+#brown-bread .bread-inner {
+	align-items: center;
+}
+#brown-bread .bread-info {
+	margin-left: -50px;
+	margin-bottom: 0px;
 }
