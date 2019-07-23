@@ -87,7 +87,7 @@ hr {
 	/*border: 1px dotted blue;*/
 /*	display: inline-block;*/
 }
-.bread-info > div:first-child > a {
+.bread-info a {
 	font-family: bahnscrift;
 	text-decoration: none;
 	text-align: center;
@@ -126,10 +126,10 @@ hr {
 	align-items: flex-start;
 }
 #white-bread  .bread-info {
-	margin-left: -110px;
+	margin-left: -55px;
 }
 #multigrain-bread  .bread-info {
-	margin-right: -30px;
+	margin-right: -12px;
 	align-self: center;
 }
 #french-bread {
@@ -140,16 +140,16 @@ hr {
 	align-items: center;
 }
 #french-bread .bread-info {
-    margin-left: -95px;
-    margin-bottom: -45px;
+    margin-left: -38px;
+    margin-bottom: -3px;
 }
 #garlic-bread {
 	margin-top: -130px;
 	padding: 0px 5em;
 }
 #garlic-bread .bread-info {
-	margin-top: 40px;
-    margin-right: -78px;
+	margin-top: 83px;
+	margin-right: 1px;
 }
 #brown-bread {
 	margin-top: -150px;
@@ -158,6 +158,6 @@ hr {
 	align-items: center;
 }
 #brown-bread .bread-info {
-	margin-left: -50px;
-	margin-bottom: 0px;
+	margin-left: -55px;
+	margin-bottom: 60px;
 }
