@@ -109,22 +109,25 @@ hr {
 }
 .bread {
 	/*border: 1px dotted cyan;*/
-	margin-top: -100px;
+	margin-top: -70px;
 	padding: 0px 5em;
 }
 .bread.right {
 	align-self: flex-end;
 }
 .bread:first-child {
-	margin-top: 2em;
+	margin-top: .2em;
+	margin-bottom: -3.5em;
 	display: flex;
 	align-items: flex-start;
 
 }
 .bread-inner {
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 }
+
+/*
 #white-bread  .bread-info {
 	margin-left: -55px;
 }
@@ -133,7 +136,7 @@ hr {
 	align-self: center;
 }
 #french-bread {
-	margin-top: -160px;
+	margin-bottom: -30px;
 }
 #french-bread .bread-inner {
 	display: flex;
@@ -160,4 +163,15 @@ hr {
 #brown-bread .bread-info {
 	margin-left: -55px;
 	margin-bottom: 60px;
+}
+
+*/
+footer {
+	text-align: center;
+	border-top: 1px solid #ccc;
+	background-color: #F8F9F4;
+	margin-top: 2em;
+}
+.footer-container {
+	display: inline-block;
 }
