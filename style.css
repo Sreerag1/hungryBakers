@@ -27,7 +27,7 @@ body {
 	/*background-color: blue;*/
 }
 hr {
-	margin: .2em 2em;
+	margin: .2em 4em;
 	border: 0.5px solid #3333331f;
 }
 .page-container {
@@ -38,15 +38,15 @@ hr {
 .header-navigation {
 	display: flex;
 	justify-content: space-between;
-	margin: .5em 2em;
+	margin: 0px 4em;
 }
 .header-navigation a {
   text-decoration: none;
   color: #333333c7;
-  margin: 0px 20px;
+  padding: .5em 1em;
   font-weight: bold;
   font-family: bahnscrift;
-  font-size: 1em;
+  font-size: 1.2em;
 }
 .left-nav {
 	display: flex;
@@ -60,18 +60,16 @@ hr {
 	display: flex;
 	justify-content: space-around;
 	background-color: #ffc0cba3;
-	padding: 0px 5px;
-	margin: .5em 2em;
-	  /*margin-top: 10px;*/
-	  border-radius: 2px;	
+	margin: 0px 4em;
+	border-radius: 2px;
 }
 .header-navigation2 a {
   text-decoration: none;
   color: #f12ab9;
-  margin: 5px 0px;
+  padding: .2em 1em .1em;
   font-weight: bold;
   font-family: bahnscrift;
-  font-size: 1.2em;
+  font-size: 1.4em;
 }
 .header-navigation2 a:hover {
 	color: white;
@@ -167,7 +165,7 @@ hr {
 
 */
 footer {
-	/*text-align: center;*/
+	text-align: center;
 	border-top: 1px solid #ccc;
 	background-color: #F8F9F4;
 	margin-top: 2em;
