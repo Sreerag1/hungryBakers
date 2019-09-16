@@ -1,5 +1,5 @@
-@font-face { font-family: OhBeloved; src: url('fonts/OhBeloved.ttf'); } 
-@font-face { font-family: bahnscrift; src: url('fonts/bahnscrift.ttf'); }
+@font-face { font-family: OhBeloved; src: url('../fonts/OhBeloved.ttf'); } 
+@font-face { font-family: bahnscrift; src: url('../fonts/bahnscrift.ttf'); }
 
 .main-container {
 	width: 100%;
@@ -47,6 +47,10 @@ hr {
   font-weight: bold;
   font-family: bahnscrift;
   font-size: 1.2em;
+}
+.header-navigation .right-nav a:last-child {
+  text-decoration: none;
+  padding: 2px 0px 0px;
 }
 .left-nav {
 	display: flex;

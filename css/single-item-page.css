@@ -1,0 +1,140 @@
+@font-face { font-family: OhBeloved; src: url('../fonts/OhBeloved.ttf'); } 
+@font-face { font-family: bahnscrift; src: url('../fonts/bahnscrift.ttf'); }
+
+body {
+	margin:0px;
+}
+hr {
+	margin: .2em 4em;
+	border: 0.5px solid #3333331f;
+}
+.main-container {
+	width: 100%;
+	margin: 0px;
+	display: flex;
+	justify-content: center;	
+	background-color: #1111ab40;
+}
+.page-container {
+	width: 90%;
+	background-color: white;
+}
+/* First navigation*/
+.header-navigation {
+	display: flex;
+	justify-content: space-between;
+	margin: 0px 4em;
+}
+.header-navigation a {
+  text-decoration: none;
+  color: #333333c7;
+  padding: .5em 1em;
+  font-weight: bold;
+  font-family: bahnscrift;
+  font-size: 1.2em;
+}
+.header-navigation .right-nav a:last-child {
+  text-decoration: none;
+  padding: 2px 0px 0px;
+}
+.left-nav {
+	display: flex;
+	justify-content: space-around;
+}
+.right-nav {
+	display: flex;	
+}
+/*Second navigation*/
+.header-navigation2 {
+	display: flex;
+	justify-content: space-around;
+	background-color: #ffc0cba3;
+	margin: 0px 4em;
+	border-radius: 2px;
+}
+.header-navigation2 a {
+  text-decoration: none;
+  color: #f12ab9;
+  padding: .2em 1em .1em;
+  font-weight: bold;
+  font-family: bahnscrift;
+  font-size: 1.4em;
+}
+.header-navigation2 a:hover {
+	color: white;
+}
+.header-navigation2 a.current-tab {
+	color: purple;
+}
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+.shop-name {
+    display: flex;
+    height: 118px;
+    width: 490px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: .5em;
+}
+/*******************/
+.single-item-container {
+    margin: .2em 4em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: #1111ab14;
+}
+
+.div1 {
+	width: 20%;
+}
+.div2 {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+}
+.item-info {
+	display: inline-block;
+    width: 90%;
+    text-align: center;
+    align-self: center;
+}
+.item-title {
+	font-family: OhBeloved;
+}
+.item-info p {
+	font-size: 20px;
+	font-family : Calibri;
+}
+.item-image {
+    display: inline-block;
+	text-align: center;
+    align-self: center;
+}
+.bread-info {
+	align-self: center;
+}
+.bread-info a {
+	font-family: bahnscrift;
+	text-decoration: none;
+	text-align: center;
+	color: #33333378;
+	font-weight: bold;
+    font-size: 22px;
+
+}
+.bread-price {
+	font-family : Calibri;
+	font-weight: bold;
+	font-size: 24px;
+}
+/********************/
+footer {
+  border-top: 1px solid #ccc;
+  background-color: #F8F9F4;
+  clear: both;
+}

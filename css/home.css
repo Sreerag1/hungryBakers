@@ -1,12 +1,12 @@
- @font-face { font-family: OhBeloved; src: url('fonts/OhBeloved.ttf'); } 
-@font-face { font-family: bahnscrift; src: url('fonts/bahnscrift.ttf'); }
+@font-face { font-family: OhBeloved; src: url('../fonts/OhBeloved.ttf'); } 
+@font-face { font-family: bahnscrift; src: url('../fonts/bahnscrift.ttf'); }
 
 body {
 	margin:0px;
 }
-hr {
-	margin: .2em 4em;
-	border: 0.5px solid #3333331f;
+.page-container hr {
+  margin: .2em 4em;
+  border: 0.5px solid #3333331f;
 }
 .main-container {
 	width: 100%;
@@ -21,9 +21,9 @@ hr {
 }
 /* First navigation*/
 .header-navigation {
-	display: flex;
-	justify-content: space-between;
-	margin: 0px 4em;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 4em;
 }
 .header-navigation a {
   text-decoration: none;
@@ -38,11 +38,11 @@ hr {
   padding: 2px 0px 0px;
 }
 .left-nav {
-	display: flex;
-	justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 .right-nav {
-	display: flex;	
+  display: flex;  
 }
 /*Second navigation*/
 .header-navigation2 {
