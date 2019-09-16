@@ -78,7 +78,7 @@ img {
 }
 
 /********** Slider CSS **************/
-.container-fluid {
+.container-fluid.fei-home-slider {
   margin: 0px;
   padding: 0px;
 }
