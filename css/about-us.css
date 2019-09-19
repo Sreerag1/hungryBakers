@@ -1,6 +1,7 @@
 @font-face { font-family: OhBeloved; src: url('../fonts/OhBeloved.ttf'); } 
 @font-face { font-family: bahnscrift; src: url('../fonts/bahnscrift.ttf'); }
 @font-face { font-family: beautifulpeople; src: url('../fonts/beautifulpeoplepersonaluse.ttf'); }
+@font-face { font-family: brandon; src: url('../fonts/brandon-grotesque-black-58a8a3e824392.otf'); }
 
 .main-container {
 	width: 100%;
@@ -107,6 +108,7 @@ hr {
 }
 /*********** Contact Us**************/
 .GETIN {
+	font-family: brandon;
 	font-size:50px;
 }
 .texts {
@@ -118,6 +120,7 @@ font-size:50px;
 	height:30px; width:300px;
 }
 .GETQ {
+	font-family: brandon;
 	 font-size:50px;
 }
 .answer {
