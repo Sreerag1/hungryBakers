@@ -1,0 +1,140 @@
+@font-face { font-family: OhBeloved; src: url('../fonts/OhBeloved.ttf'); } 
+@font-face { font-family: bahnscrift; src: url('../fonts/bahnscrift.ttf'); }
+@font-face { font-family: beautifulpeople; src: url('../fonts/beautifulpeoplepersonaluse.ttf'); }
+
+.main-container {
+	width: 100%;
+	margin: 0px;
+	display: flex;
+	justify-content: center;	
+	background-color: #1111ab40;
+}
+ .shop-name {
+    display: flex;
+    height: 118px;
+    width: 490px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: .5em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+body {
+	margin: 0px;
+	/*background-color: blue;*/
+}
+hr {
+	margin: .2em 4em;
+	border: 0.5px solid #3333331f;
+}
+.page-container {
+	width: 90%;
+	background-color: white;
+}
+/* First navigation*/
+.header-navigation {
+	display: flex;
+	justify-content: space-between;
+	margin: 0px 4em;
+}
+.header-navigation a {
+  text-decoration: none;
+  color: #333333c7;
+  padding: .5em 1em;
+  font-weight: bold;
+  font-family: bahnscrift;
+  font-size: 1.2em;
+}
+.header-navigation .right-nav a:last-child {
+  text-decoration: none;
+  padding: 2px 0px 0px;
+}
+.left-nav {
+	display: flex;
+	justify-content: space-around;
+}
+.right-nav {
+	display: flex;	
+}
+/*Second navigation*/
+.header-navigation2 {
+	display: flex;
+	justify-content: space-around;
+	background-color: #ffc0cba3;
+	margin: 0px 4em;
+	border-radius: 2px;
+}
+.header-navigation2 a {
+  text-decoration: none;
+  color: #f12ab9;
+  padding: .2em 1em .1em;
+  font-weight: bold;
+  font-family: bahnscrift;
+  font-size: 1.4em;
+}
+.header-navigation2 a:hover {
+	color: white;
+}
+.header-navigation2 a.current-tab {
+	color: purple;
+}
+.aboutus-container {
+	text-align: center;
+	margin: 0px 4em;
+}
+.aboutus-title {
+	font-family: beautifulpeople;
+	font-weight: bold;
+	font-size: 36px;
+	margin:1em 4em 0px;
+}
+.aboutus-banner {
+	display: inline-block;
+}
+.aboutus-info {
+	display: inline-block;
+	width: 60%;
+	font-size: 20px;
+	margin: 0px 4em;
+}
+.aboutus-footer {
+	display: inline-block;
+	margin: 0px 4em;	
+}
+/*********** Contact Us**************/
+.GETIN {
+	font-size:50px;
+}
+.texts {
+}
+.GETQ {
+font-size:50px;
+}
+.form-input {
+	height:30px; width:300px;
+}
+.GETQ {
+	 font-size:50px;
+}
+.answer {
+	 font-size:30px;
+	 font-size:30px; color:red;
+}
+.address {
+	font-size: 30px;
+}
+/*************************/
+
+footer {
+	text-align: center;
+	border-top: 1px solid #ccc;
+	background-color: #F8F9F4;
+	margin-top: 2em;
+}
+.footer-container {
+	display: inline-block;
+}
