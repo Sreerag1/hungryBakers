@@ -57,30 +57,37 @@ require "header.php";
                 <h3 class="browse-categores-text">BROWSE CATEGORIES</h3>
                 <div class="categories-container">
                     <div class="category-box">
-                        <a href="breads.html">
+                        <a href='<?php echo $root."category.php?category=BREADS";?>'>
                         <div class="category-image">
                             <img src="images/categories/breads.jpg">
                         </div>
                         <span class="category-text">BREADS</span>
-                    </a>
+                        </a>
                     </div>
                     <div class="category-box">
-                        <div class="category-image">
-                            <img src="images/categories/cakes.jpg">
-                        </div>
-                        <span class="category-text">CAKES</span>
+                        <a href='<?php echo $root."category.php?category=CAKES";?>'>
+                            <div class="category-image">
+                                <img src="images/categories/cakes.jpg">
+                            </div>
+                            <span class="category-text">CAKES</span>
+                        </a>
                     </div>
                     <div class="category-box">
-                        <div class="category-image">
-                            <img src="images/categories/cookies.jpg">
-                        </div>
-                        <span class="category-text">COOKIES</span>
+                        <a href='<?php echo $root."category.php?category=COOKIES";?>'>
+                            
+                            <div class="category-image">
+                                <img src="images/categories/cookies.jpg">
+                            </div>
+                            <span class="category-text">COOKIES</span>
+                        </a>
                     </div>
                     <div class="category-box">
-                        <div class="category-image">
-                            <img src="images/categories/cupcakes.jpg">
-                        </div>
-                        <span class="category-text">CUPCAKES</span>
+                        <a href='<?php echo $root."category.php?category=CUPCAKES";?>'>
+                            <div class="category-image">
+                                <img src="images/categories/cupcakes.jpg">
+                            </div>
+                            <span class="category-text">CUPCAKES</span>
+                        </a>
                     </div>
                 </div>
 <?php require "footer.php"; ?>
