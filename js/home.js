@@ -3,7 +3,7 @@ $(document).ready(function() {
   //Add to cart functionality
   $(".add-to-cart").click(function(){
     $itemId = $(this).data("id");
-    $.post( "ajax-cart.php", { id: $itemId})
+    $.post( "ajax-cart.php", { action: "add",id: $itemId})
       .done(function( data ) {
         console.log(data);
         if (data === "exists") {
@@ -15,7 +15,20 @@ $(document).ready(function() {
         }
       });
   });
-
+//Delete from cart functionality
+  $(".delete-from-item").click(function(){
+    $itemId = $(this).data("id");
+    $.post( "ajax-cart.php", { action: "delete",id: $itemId})
+      .done(function( data ) {
+        data = JSON.parse(data);
+        console.log(data.status);
+        if (data.status === "success") {
+          alert("Item deleted from the cart successfully! "+ data);
+        } else {
+          alert( "Item could not be deleted from the cart, failed! "+ data);
+        }
+      });
+  });
 
 //Highlighting the current category
 //GET parameter

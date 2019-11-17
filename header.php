@@ -1,6 +1,15 @@
 <?php
 session_start();
 // unset($_SESSION["cart"]);
+ini_set('error_reporting', E_ALL);
+ini_set("display_errors", 1);
+ini_set("log_errors", 1);
+ini_set("error_log", "/var/www/html/hungryBakers/debug.log");
+
+$parsedUrl = parse_url($_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME']);
+$root = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . '/';
+$root = $root."hungryBakers/";
+
 require "class-cart.php";
 if (!isset($_SESSION["cart"])) {
     $_SESSION["cart"] = serialize(Cart::cartInit());
@@ -12,13 +21,6 @@ if (!isset($_SESSION["cart"])) {
 <html>
     <head>
         <title></title>
-        <?php
-            ini_set('error_reporting', E_ALL);
-            ini_set("display_errors", 1);
-        $parsedUrl = parse_url($_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME']);
-        $root = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . '/';
-        $root = $root."hungryBakers/";
-        ?>
         <link rel="stylesheet" type="text/css" href='<?php echo $root."css/breads.css";?>'>
         <link rel="stylesheet" type="text/css" href='<?php echo $root."css/home.css";?>'>
         <meta charset="utf-8">

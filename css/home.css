@@ -163,19 +163,49 @@ img {
 }
 /*****Cart CSS******/
 .cart-container {
-  margin: 0px 4em;
+  margin: 1.5em 4em 0px;
   display: flex;
   justify-content: space-between;
 }
+.cart-container h1 {
+  text-align: center;
+}
 .cart-items {
   width: 75%;
+}
+.cart-item{
+display: flex;
+}
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70px;
+    margin-left: 10px;
+    padding: 5px 0px;
+}
+tr{
+  border-bottom: .5px solid green;
 }
 .cart-total {
   width: 20%; 
 }
 .cart-img {
-  width: 120px;
-  height: 120px;
+  padding: 5px;
+  width: 70px;
+}
+.cart-empty {
+    margin: 1.5em 4em 0px;
+    border-radius: 10px;
+    height: 150px;
+    background: #fbffa2;
+    color: #5fc319;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cart-cost-info {
+  width: 100%;
 }
 /***********/
 footer {
