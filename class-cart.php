@@ -25,7 +25,7 @@ class Cart
     public function addItem($itemId, $quantity = 1)
     {
         if (array_key_exists($itemId, $this->items)) {
-            $this->items[$itemId] =$this->items[$itemId] + $quantity;
+            $this->items[$itemId] = $this->items[$itemId] + $quantity;
         } else {
             $this->items[$itemId] =$quantity;
         }
@@ -33,13 +33,20 @@ class Cart
         require "connection.php";
         $sth = $conn->prepare("SELECT price FROM masteritemlist where id = $itemId");
         $sth->execute();
-        $row = $sth->fetch(PDO::FETCH_ASSOC);
+        $itemInfo = $sth->fetch(PDO::FETCH_ASSOC);
         error_log("class");
-        error_log(print_r($row, 1));
-        $this->totalCost = $this->totalCost + $quantity*$row['price'];
-        $this->totalGst = $this->totalCost * $this->gstPercent/100;
-        $this->totalCost += $this->totalCost + $this->totalGst;
-        return $this->items;
+        error_log(print_r($itemInfo, 1));
+        //Calculate Item GST
+        $itemGst = $quantity*$itemInfo['price'] * $this->gstPercent/100;
+        error_log("itemGst");
+        error_log($itemGst);
+        $this->totalGst = $this->totalGst + $itemGst;
+        $this->totalCost = $this->totalCost + $quantity*$itemInfo['price'] +$itemGst;
+        error_log("itemGst");
+        error_log($itemGst);
+        
+        error_log(print_r($this, 1));
+        return $this->totalItems;
     }
     public function deleteItem($itemId = '')
     {
@@ -48,10 +55,12 @@ class Cart
         require "connection.php";
         $sth = $conn->prepare("SELECT price FROM masteritemlist where id = $itemId");
         $sth->execute();
-        $row = $sth->fetch(PDO::FETCH_ASSOC);
+        $itemInfo = $sth->fetch(PDO::FETCH_ASSOC);
         error_log("class");
-        error_log(print_r($row, 1));
-        $this->totalCost = $this->totalCost - $this->items[$itemId]*$row['price'];
+        error_log(print_r($itemInfo, 1));
+        $itemGst= $itemInfo['price'] *  $this->gstPercent/100;
+        $this->totalGst = $this->totalGst - $itemGst;
+        $this->totalCost = $this->totalCost - $this->items[$itemId]*$itemInfo['price'] - $itemGst;
         unset($this->items[$itemId]);
         error_log(print_r($this->items, 1));
         return true;
@@ -67,7 +76,7 @@ class Cart
         echo "All items:";
         print_r($this->items);
         echo "Item Total:".$this->totalItems."<br>";
-        echo "Item Cost:".$this->totalCost."<br>";
+        echo "Cart total Cost:".$this->totalCost."<br>";
         echo "Total Gst Percent:".$this->gstPercent."<br>";
         echo "Total Gst:".$this->totalGst."<br>";
         echo "</pre>";

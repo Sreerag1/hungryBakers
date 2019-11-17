@@ -6,8 +6,8 @@ require "connection.php";
 // $sth = $conn->prepare("SELECT * FROM masteritemlist where category ='".$category."'");
 // var_dump($cart);
 $cart = unserialize($_SESSION["cart"]);
-echo "displaying cart";
-$cart->displayCart();
+// echo "displaying cart";
+// $cart->displayCart();
 $itemIds = array_keys($cart->items);
 if (empty($itemIds)) {
     echo "<div class='cart-empty'><h1>Your cart is empty!</h1></div>";
