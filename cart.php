@@ -19,10 +19,11 @@ $sth = $conn->prepare("SELECT * FROM masteritemlist where id IN ($in)", array(PD
 $sth->execute($itemIds);
 $cartItems = $sth->fetchAll(PDO::FETCH_ASSOC);
 // echo "<pre>";
-    // print_r($cartItems);
+        // print_r($cartItems);
 // echo "</pre>";
 ?>
 <div class = "cart-container">
+    <div id="overlay"><img src="<?= $root."images/loading.gif";?>"></div>
     <table class="cart-items">
         <tr>
             <th>Sr</th>
@@ -69,19 +70,25 @@ $cartItems = $sth->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
                 </table><!-- end of cart items -->
                 <div class="cart-total">
-                    <h3>Total Items &nbsp;: &nbsp; <?=  $cart->totalItems; ?></h3>
-                    <h3>Total Cost &nbsp;: &nbsp; &#x20B9;<?= $cart->totalCost; ?></h3>
-                    <table  class="cart-cost-info">
+                    <table class="cart-cost-info">
+                        <tr>
+                            <th><h3>Total Items :</h3></th>
+                            <th><h3><?=  $cart->totalItems; ?></h3></th>
+                        </tr>
+                        <tr>
+                            <th><h3>Total Cost :</h3></th>
+                            <th><h3>&#x20B9;<?= $cart->totalCost; ?></h3></th>
+                        </tr>
                         <tr>
                             <th>Items total cost:</th>
                             <td>&#x20B9;<?= $cart->totalCost - $cart->totalGst;?></td>
                         </tr>
                         <tr>
-                            <th>GST (<?= $cart->gstPercent;?>%):</th>
+                            <th>+ GST (<?= $cart->gstPercent;?>%):</th>
                             <td> &#x20B9; <?= $cart->totalGst;?></td>
                         </tr>
                         <tr>
-                            <th style="border-top:1px solid green;"> + </th>
+                            <th style="border-top:1px solid green;"> Total: </th>
                             <td style="border-top:1px solid green;">&#x20B9;<?= $cart->totalCost; ?></td>
                         </tr>
                     </table>

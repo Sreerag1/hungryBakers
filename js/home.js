@@ -17,12 +17,18 @@ $(document).ready(function() {
   });
 //Delete from cart functionality
   $(".delete-from-item").click(function(){
+    $("#overlay").css("display", "block");
+    $thisRow = $(this).parents("tr");
+    console.log("printing parent row");
+    console.log($thisRow);
     $itemId = $(this).data("id");
     $.post( "ajax-cart.php", { action: "delete",id: $itemId})
       .done(function( data ) {
+        $("#overlay").css("display", "none");
         data = JSON.parse(data);
         console.log(data.status);
         if (data.status === "success") {
+          $thisRow.remove();
           alert("Item deleted from the cart successfully! "+ data);
         } else {
           alert( "Item could not be deleted from the cart, failed! "+ data);
@@ -32,7 +38,7 @@ $(document).ready(function() {
 
 //Highlighting the current category
 //GET parameter
-  console.log("getting get parameter");
+  // console.log("getting get parameter");
 $.extend({
   getUrlVars: function(){
     var vars = [], hash;

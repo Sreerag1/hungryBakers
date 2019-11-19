@@ -26,9 +26,14 @@ if (!isset($_SESSION["cart"])) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href='<?php echo $root."css/bootstrap.css";?>' >
+
+        <script>
+            window.overlay = '<div id="overlay"><img src="<?= $root."images/ajax-loader.gif";?>"></div>';
+        </script>
         <script type="text/javascript" src='<?php echo $root."js/jquery.js";?>'></script>
         <script type="text/javascript" src='<?php echo $root."js/boostrap.js";?>'></script>
         <script type="text/javascript" src='<?php echo $root."js/home.js";?>'></script>
+
     </head>
     <body>
         <div class="main-container">

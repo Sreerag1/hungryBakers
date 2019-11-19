@@ -50,6 +50,9 @@ class Cart
     }
     public function deleteItem($itemId = '')
     {
+        if (empty($this->totalItems)) {
+            return false;
+        }
         error_log("deleting item from cart: ".$itemId);
         $this->totalItems = $this->totalItems - $this->items[$itemId];
         require "connection.php";
