@@ -13,8 +13,8 @@ $root = $root."hungryBakers/";
 require "class-cart.php";
 if (!isset($_SESSION["cart"])) {
     $_SESSION["cart"] = serialize(Cart::cartInit());
-    echo "<h1>Setting cart variable</h1>";
-    var_dump(isset($_SESSION['cart']));
+    // echo "<h1>Setting cart variable</h1>";
+    // var_dump(isset($_SESSION['cart']));
 }
 ?>
 <!DOCTYPE html>

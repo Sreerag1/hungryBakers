@@ -7,11 +7,11 @@ $(document).ready(function() {
       .done(function( data ) {
         console.log(data);
         if (data === "exists") {
-          alert("Item already exists in cart! Please visit the cart to edit quantity!"+ data);
+          alert("Item already exists in cart! Please visit the cart to edit quantity!");
         } else if (data === "true") {
-          alert("Item added to the cart successfully! "+ data);
+          alert("Item added to the cart successfully! ");
         } else {
-          alert( "Could not add item to the cart, failed! "+ data);
+          alert( "Could not add item to the cart, failed! ");
         }
       });
   });
@@ -21,21 +21,61 @@ $(document).ready(function() {
     $thisRow = $(this).parents("tr");
     console.log("printing parent row");
     console.log($thisRow);
-    $itemId = $(this).data("id");
+    $itemId = $(this).parents("tr").data("id");
     $.post( "ajax-cart.php", { action: "delete",id: $itemId})
       .done(function( data ) {
         $("#overlay").css("display", "none");
         data = JSON.parse(data);
         console.log(data.status);
         if (data.status === "success") {
+          if (data.cart.totalItems == 0) {
+            $( ".cart-container").html( "<div class='cart-empty'><h1>Your cart is empty!</h1></div>");
+          }else {
+            updateCartInfor(data.cart);
+          }
           $thisRow.remove();
-          alert("Item deleted from the cart successfully! "+ data);
+          // alert("Item deleted from the cart successfully! "+ data);
         } else {
           alert( "Item could not be deleted from the cart, failed! "+ data);
         }
       });
   });
-
+//Change the item quantity from cart
+$price =0;
+$('select[name="quantity"').on('change', function() {
+    $("#overlay").css("display", "block");
+    $thisRow = $(this).parents("tr");
+    console.log("printing parent row");
+    console.log($thisRow);
+    $itemId = $(this).parents("tr").data("id");
+    $price = parseInt($(this).parents("tr").data("price"));
+    $quantity =this.value;
+    $.post( "ajax-cart.php", { action: "update",id: $itemId, quantity:$quantity})
+      .done(function( data ) {
+        $("#overlay").css("display", "none");
+        data = JSON.parse(data);
+        console.log(data.status);
+        if (data.status === "success") {
+          updateCartInfor(data.cart);
+          // $price =parseInt($(':nth-child(4)', $(this)).html());
+          console.log("price:"+$price);          
+          $( ".price-"+$itemId).html($price * $quantity);
+          console.log($price * $quantity);
+          // $thisRow.remove();
+          // alert("Item quantity updated successfully! "+ data);
+        } else {
+          alert( "Item could not be deleted from the cart, failed! "+ data);
+        }
+      });
+});
+function updateCartInfor($cart) {
+  console.log($cart);
+  $( "#total-items").html( $cart.totalItems );
+  $(".total-cost").html($cart.totalCost);
+  $("#items-total-cost").html($cart.totalCost - $cart.totalGst);
+  $("#total-gst").html($cart.totalGst);
+  // body...
+}
 //Highlighting the current category
 //GET parameter
   // console.log("getting get parameter");

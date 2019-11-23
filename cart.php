@@ -10,7 +10,9 @@ $cart = unserialize($_SESSION["cart"]);
 // $cart->displayCart();
 $itemIds = array_keys($cart->items);
 if (empty($itemIds)) {
+    echo '<div class = "cart-container">';
     echo "<div class='cart-empty'><h1>Your cart is empty!</h1></div>";
+    echo '</div>';
     require "footer.php";
     exit;
 }
@@ -26,7 +28,6 @@ $cartItems = $sth->fetchAll(PDO::FETCH_ASSOC);
     <div id="overlay"><img src="<?= $root."images/loading.gif";?>"></div>
     <table class="cart-items">
         <tr>
-            <th>Sr</th>
             <th>Name</th>
             <th>Unit</th>
             <th>Quantity</th>
@@ -34,8 +35,7 @@ $cartItems = $sth->fetchAll(PDO::FETCH_ASSOC);
             <th>Amount</th>
         </tr>
         <?php foreach ($cartItems as $key => $item) : ?>
-        <tr>
-            <td><?= $key+1 ?></td>
+        <tr data-id="<?= $item['id'] ?>" data-price="<?= $item['price'] ?>">
             <td>
                 <div class='cart-item'>
                     <div class='img-container cart-img'>
@@ -45,24 +45,29 @@ $cartItems = $sth->fetchAll(PDO::FETCH_ASSOC);
                         <div>
                             <?= $item['item_name'] ?>
                         </div>
-                        <a class="delete-from-item" data-id="<?= $item['id'] ?>" href="javascript:void(0)">Delete</a>
+                        <a class="delete-from-item"  href="javascript:void(0)">Delete</a>
                     </div>
                 </div>
                 </td> <!-- end of Name column -->
                 <td><?= $item['unit'] ?></td> <!-- end of unit column -->
                 <td>
                     <span>
-                        <select name="quantity">
+                        <select name="quantity" 
+                        >
                             <?php for ($i= 1; $i <= 10; $i++) : ?>
                             <option value="<?php echo $i ?>"
-                                <?php echo ($i === $cart->items[$item['id']])? 'selected="selected"': "";?>
+                                <?php echo ($i == $cart->items[$item['id']])? 'selected="selected"': "";?>
+                                <?php error_log("checking $".$i."==".$cart->items[$item['id']]);
+                                error_log("eval:".($i == $cart->items[$item['id']])); ?>
                             ><?= $i ?></option>
                             <?php endfor; ?>
+                            <?php var_dump($cart->items[$item['id']]);
+                            var_dump($i);?>
                         </select>
                     </span>
                     </td><!-- end of Quantity column -->
-                    <td><?= $item['price'] ?></td><!-- end of Price column -->
-                    <td><?= $cart->items[$item['id']]*$item['price'] ?></td><!-- end of Quantity column -->
+                    <td ><?= $item['price'] ?></td><!-- end of Price column -->
+                    <td class="price-<?= $item['id'] ?>"><?= $cart->items[$item['id']]*$item['price'] ?></td><!-- end of Quantity column -->
                 </tr>
                 <?php
                 // var_dump($item);
@@ -73,23 +78,23 @@ $cartItems = $sth->fetchAll(PDO::FETCH_ASSOC);
                     <table class="cart-cost-info">
                         <tr>
                             <th><h3>Total Items :</h3></th>
-                            <th><h3><?=  $cart->totalItems; ?></h3></th>
+                            <th><h3 id="total-items"><?=  $cart->totalItems; ?></h3></th>
                         </tr>
                         <tr>
                             <th><h3>Total Cost :</h3></th>
-                            <th><h3>&#x20B9;<?= $cart->totalCost; ?></h3></th>
+                            <th><h3 class="total-cost">&#x20B9;<?= $cart->totalCost; ?></h3></th>
                         </tr>
                         <tr>
                             <th>Items total cost:</th>
-                            <td>&#x20B9;<?= $cart->totalCost - $cart->totalGst;?></td>
+                            <td id="items-total-cost">&#x20B9;<?= $cart->totalCost - $cart->totalGst;?></td>
                         </tr>
                         <tr>
                             <th>+ GST (<?= $cart->gstPercent;?>%):</th>
-                            <td> &#x20B9; <?= $cart->totalGst;?></td>
+                            <td id="total-gst"> &#x20B9; <?= $cart->totalGst;?></td>
                         </tr>
                         <tr>
                             <th style="border-top:1px solid green;"> Total: </th>
-                            <td style="border-top:1px solid green;">&#x20B9;<?= $cart->totalCost; ?></td>
+                            <td class="total-cost" style="border-top:1px solid green;">&#x20B9;<?= $cart->totalCost; ?></td>
                         </tr>
                     </table>
                 </div>

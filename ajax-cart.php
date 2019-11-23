@@ -19,10 +19,15 @@ switch ($action) {
         addItem(htmlspecialchars($_POST["id"]));
         break;
     case 'delete':
-        error_log("Inside case delete".__FILE__);
         deleteItem(htmlspecialchars($_POST["id"]));
+        break;
+    case 'update':
+        error_log("Inside case delete".__FILE__);
+        updateItemQuantity(htmlspecialchars($_POST["id"]), htmlspecialchars($_POST["quantity"]));
+        break;
     default:
         # code...
+        exit;
         break;
 }
 function addItem($itemId = '')
@@ -56,6 +61,26 @@ function deleteItem($itemId = '')
     if (!empty($itemId)) {
         error_log("deleting item from cart1: ".$itemId);
         if ($cart->deleteItem($itemId)) {
+            $_SESSION["cart"] = serialize($cart);
+            $result['status'] = "success";
+        } else {
+            $result['status'] = "fail";
+        }
+    }
+    $result = json_encode($result);
+    echo $result;
+}
+function updateItemQuantity($itemId = '', $quantity = 1)
+{
+    $cart = unserialize($_SESSION["cart"]);
+    $result = array(
+        'status' => "fail",
+        'cart' => $cart
+         );
+    error_log("Inside function update".__FILE__);
+    if (!empty($itemId)) {
+        error_log("updating item from cart1: ".$itemId." with quantity".$quantity);
+        if ($cart->updateItem($itemId, $quantity)) {
             $_SESSION["cart"] = serialize($cart);
             $result['status'] = "success";
         } else {

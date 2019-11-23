@@ -31,19 +31,18 @@ class Cart
         }
         $this->totalItems = $this->totalItems + $quantity;
         require "connection.php";
+
         $sth = $conn->prepare("SELECT price FROM masteritemlist where id = $itemId");
         $sth->execute();
         $itemInfo = $sth->fetch(PDO::FETCH_ASSOC);
-        error_log("class");
-        error_log(print_r($itemInfo, 1));
+        // error_log("class");
+        // error_log(print_r($itemInfo, 1));
         //Calculate Item GST
-        $itemGst = $quantity*$itemInfo['price'] * $this->gstPercent/100;
-        error_log("itemGst");
-        error_log($itemGst);
-        $this->totalGst = $this->totalGst + $itemGst;
-        $this->totalCost = $this->totalCost + $quantity*$itemInfo['price'] +$itemGst;
-        error_log("itemGst");
-        error_log($itemGst);
+        $itemGst = round($quantity*$itemInfo['price'] * $this->gstPercent/100, 2);
+        // error_log("itemGst");
+        // error_log($itemGst);
+        $this->totalGst =$this->totalGst + $itemGst;
+        $this->totalCost =$this->totalCost + $quantity*$itemInfo['price'] +$itemGst;
         
         error_log(print_r($this, 1));
         return $this->totalItems;
@@ -61,16 +60,53 @@ class Cart
         $itemInfo = $sth->fetch(PDO::FETCH_ASSOC);
         error_log("class");
         error_log(print_r($itemInfo, 1));
-        $itemGst= $itemInfo['price'] *  $this->gstPercent/100;
-        $this->totalGst = $this->totalGst - $itemGst;
-        $this->totalCost = $this->totalCost - $this->items[$itemId]*$itemInfo['price'] - $itemGst;
+        $itemGst= round($itemInfo['price'] *  $this->gstPercent/100, 2);
+        
+        $this->totalGst =round($this->totalGst - $itemGst, 2);
+        $this->totalCost = round($this->totalCost - $this->items[$itemId]*$itemInfo['price'] - $itemGst);
         unset($this->items[$itemId]);
         error_log(print_r($this->items, 1));
         return true;
     }
-    public function updateItem($value = '')
+    public function updateItem($itemId = '', $quantity = 1)
     {
-        # code...
+        $previousItemQuantity = $this->items[$itemId];
+        if (array_key_exists($itemId, $this->items)) {
+            //remove old amount of quantity
+            $this->totalItems = $this->totalItems - $previousItemQuantity;
+            //update with new quantity
+            $this->totalItems = $this->totalItems + $quantity;
+            $this->items[$itemId] = $quantity;
+        } else {
+            return false;
+        }
+        require "connection.php";
+
+        $sth = $conn->prepare("SELECT price FROM masteritemlist where id = $itemId");
+        $sth->execute();
+        $itemInfo = $sth->fetch(PDO::FETCH_ASSOC);
+        // error_log("class");
+        // error_log(print_r($itemInfo, 1));
+        //Calculate Item GST
+        $previousItemGst = round($previousItemQuantity*$itemInfo['price'] * $this->gstPercent/100, 2);
+        
+        //remove previous amount
+        $this->totalGst =round($this->totalGst - $previousItemGst, 2) ;
+        
+        $itemGst = round($quantity*$itemInfo['price'] * $this->gstPercent/100, 2);
+        // error_log("itemGst");
+        // error_log($itemGst);
+        // update new amount
+        $this->totalGst =$this->totalGst + $itemGst ;
+
+        //remove previous amount
+        $this->totalCost =round($this->totalCost - $previousItemQuantity*$itemInfo['price'] - $previousItemGst, 2);
+        
+        // update new amount
+        $this->totalCost =round($this->totalCost + $quantity*$itemInfo['price'] +$itemGst, 2);
+        
+        error_log(print_r($this, 1));
+        return $this->totalItems;
     }
     public function displayCart()
     {
