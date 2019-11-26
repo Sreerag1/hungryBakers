@@ -1,48 +1,30 @@
 <?php
-session_start();
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "hungry_bakers";
-
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // sql to create table
-    $sql = "CREATE TABLE IF NOT EXISTS users (
-    id INT(10) AUTO_INCREMENT PRIMARY KEY, 
-    username VARCHAR(120) NOT NULL,
-    password VARCHAR(120) NOT NULL
-    )";
-
-        // use exec() because no results are returned
-        $conn->exec($sql);
-} catch (PDOException $e) {
-    echo $sql . "<br>" . $e->getMessage();
-}
+require "connection.php";
 
 if (isset($_POST["submit"]) && $_POST["submit"]  == 1) {
     $submitted= 1;
-    $username = $_POST["username"];
-    $password = $_POST["pwd"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
     $userError = "";
     $passwordError  = "";
-    if (empty($username)) {
-        $userError ="Username cannot be empty!";
+    if (empty($email)) {
+        $userError ="Email field cannot be empty!";
     }
     if (empty($password)) {
         $passwordError = "Password cannot be empty!";
     }
-    if (!empty($password) || !empty($username)) {
-        $sth = $conn->prepare("SELECT username, password FROM users where username ='".$username."'");
+    if (!empty($password) && !empty($email)) {
+        $sth = $conn->prepare("SELECT user_firstname, user_lastname, user_email, user_password FROM user where user_email ='".$email."'");
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_ASSOC);
-        if (!empty($result) && $result["password"] == $password) {
+        if (!empty($result) && $result["user_password"] == $password) {
+            session_start();
+            $_SESSION['logged_in'] = true;
+            $_SESSION['user_email'] =$result["user_email"];
+            $_SESSION['user_firstname'] =$result["user_firstname"];
             header('Location: home.php');
         } elseif (empty($result)) {
-            $userError = "Invalid username!";
+            $userError = "Email is not registered!";
         } else {
             $passwordError ="Invalid password!";
         }
