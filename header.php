@@ -1,6 +1,5 @@
 <?php
 session_start();
-// unset($_SESSION["cart"]);
 
 ini_set('error_reporting', E_ALL);
 ini_set("display_errors", 1);
@@ -11,6 +10,8 @@ ini_set("error_log", "/var/www/html/hungryBakers/debug.log");
 $parsedUrl = parse_url($_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME']);
 $root = $parsedUrl['scheme'] . '://' . $parsedUrl['host'] . '/';
 $root = $root."hungryBakers/";
+global $root2;
+$GLOBAL['root2']= $root;
 
 require "class-cart.php";
 if (!isset($_SESSION["cart"])) {
@@ -49,12 +50,13 @@ if (!isset($_SESSION["cart"])) {
                         <a href='<?php echo $root."contact-us.php";?>'>CONTACT US</a>
                     </div>
                     <div class="right-nav">
-                        <a 
+                        <a
                         <?php echo (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] =true)? "href=''": "href='".$root."signup.php'";?>
                         >
                         <?php echo (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] =true)? "Welcome, ".$_SESSION['user_firstname']: "SIGN UP";?>
                         </a>
                         
+                        <?php echo (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] =true)? '<a href="'.$root.'myorders.php">MY ORDERS</a>': "";?>
                         <a 
                         <?php echo (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] =true)? "href='".$root."logout.php'": "href='".$root."login.php'";?>
                         >

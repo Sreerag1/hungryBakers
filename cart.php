@@ -1,13 +1,15 @@
 <?php
 require "header.php";
 require "connection.php";
+// unset($_SESSION["cart"]);
+
 // phpinfo();
 ///var/lib/php/sessions
 // $sth = $conn->prepare("SELECT * FROM masteritemlist where category ='".$category."'");
 // var_dump($cart);
 $cart = unserialize($_SESSION["cart"]);
-// echo "displaying cart";
-// $cart->displayCart();
+echo "displaying cart";
+$cart->displayCart();
 $itemIds = array_keys($cart->items);
 if (empty($itemIds)) {
     echo '<div class = "cart-container">';
@@ -57,12 +59,8 @@ $cartItems = $sth->fetchAll(PDO::FETCH_ASSOC);
                             <?php for ($i= 1; $i <= 10; $i++) : ?>
                             <option value="<?php echo $i ?>"
                                 <?php echo ($i == $cart->items[$item['id']])? 'selected="selected"': "";?>
-                                <?php error_log("checking $".$i."==".$cart->items[$item['id']]);
-                                error_log("eval:".($i == $cart->items[$item['id']])); ?>
                             ><?= $i ?></option>
                             <?php endfor; ?>
-                            <?php var_dump($cart->items[$item['id']]);
-                            var_dump($i);?>
                         </select>
                     </span>
                     </td><!-- end of Quantity column -->
@@ -77,7 +75,7 @@ $cartItems = $sth->fetchAll(PDO::FETCH_ASSOC);
                 <div class="cart-total">
                     <table class="cart-cost-info">
                         <tr>
-                            <th><h3>Total Items :</h3></th>
+                            <th><h3>Total Items:</h3></th>
                             <th><h3 id="total-items"><?=  $cart->totalItems; ?></h3></th>
                         </tr>
                         <tr>
@@ -96,7 +94,13 @@ $cartItems = $sth->fetchAll(PDO::FETCH_ASSOC);
                             <th style="border-top:1px solid green;"> Total: </th>
                             <td class="total-cost" style="border-top:1px solid green;">&#x20B9;<?= $cart->totalCost; ?></td>
                         </tr>
+                        <tr>
+                            <td colspan="2">
+                                
+                             <button id="place-order" type="button" class="btn btn-warning text-center">Place Order</button>
+                            </td>
+                        </tr>
                     </table>
-                </div>
+                </div><!-- end of cart total -->
                 </div><!-- end of cart container -->
                 <?php require "footer.php"; ?>

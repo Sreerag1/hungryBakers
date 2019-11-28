@@ -14,7 +14,7 @@ if (isset($_POST["submit"]) && $_POST["submit"]  == 1) {
         $passwordError = "Password cannot be empty!";
     }
     if (!empty($password) && !empty($email)) {
-        $sth = $conn->prepare("SELECT user_firstname, user_lastname, user_email, user_password FROM user where user_email ='".$email."'");
+        $sth = $conn->prepare("SELECT user_id, user_firstname, user_lastname, user_email, user_password FROM user where user_email ='".$email."'");
         $sth->execute();
         $result = $sth->fetch(PDO::FETCH_ASSOC);
         if (!empty($result) && $result["user_password"] == $password) {
@@ -22,6 +22,7 @@ if (isset($_POST["submit"]) && $_POST["submit"]  == 1) {
             $_SESSION['logged_in'] = true;
             $_SESSION['user_email'] =$result["user_email"];
             $_SESSION['user_firstname'] =$result["user_firstname"];
+            $_SESSION['user_id'] =$result["user_id"];
             header('Location: home.php');
         } elseif (empty($result)) {
             $userError = "Email is not registered!";

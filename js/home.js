@@ -71,11 +71,29 @@ $('select[name="quantity"').on('change', function() {
 function updateCartInfor($cart) {
   console.log($cart);
   $( "#total-items").html( $cart.totalItems );
-  $(".total-cost").html($cart.totalCost);
-  $("#items-total-cost").html($cart.totalCost - $cart.totalGst);
-  $("#total-gst").html($cart.totalGst);
+  $(".total-cost").html("&#x20B9;"+$cart.totalCost);
+  $("#items-total-cost").html("&#x20B9;"+parseFloat($cart.totalCost - $cart.totalGst).toFixed(2));
+  $("#total-gst").html("&#x20B9;"+$cart.totalGst);
   // body...
 }
+  //Place order functionality
+  $("#place-order").click(function(){
+
+    $.post( "ajax-cart.php", { action: "place_order"})
+      .done(function( data ) {
+        data = JSON.parse(data);
+        console.log(data.status);
+        if (data.status === "nologin") {
+          alert("Please login to place order!"+ data);
+        } else if(data.status === "success") {
+          $( ".cart-container").html( "<div class='cart-empty'><h1>Your order has been placed successfully!</h1></div>");
+        } else {
+          alert("OOPS! something went wrong!"+ data);
+        }
+
+      });
+  });
+
 //Highlighting the current category
 //GET parameter
   // console.log("getting get parameter");

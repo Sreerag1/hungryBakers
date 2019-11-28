@@ -217,7 +217,25 @@ display: flex;
   text-align: right;
 
 }
-
+#place-order {
+  margin: 1em 0px;
+  padding:.5em 1em;
+  width: 100%;
+}
+/*************** My orders ***********/
+.orders-container {
+  margin: 1.5em 4em 0px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  min-height: 40vh;
+}
+.order-items {
+  width: 100%;
+}
+.orders-container .order-items td {
+  padding: 1em;
+}
 /****** Overlay ******/
 #overlay {
   position: absolute;

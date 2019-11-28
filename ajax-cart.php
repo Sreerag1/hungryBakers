@@ -25,6 +25,10 @@ switch ($action) {
         error_log("Inside case delete".__FILE__);
         updateItemQuantity(htmlspecialchars($_POST["id"]), htmlspecialchars($_POST["quantity"]));
         break;
+    case 'place_order':
+        error_log("Inside placing order delete".__FILE__);
+        placeOrder();
+        break;
     default:
         # code...
         exit;
@@ -85,6 +89,46 @@ function updateItemQuantity($itemId = '', $quantity = 1)
             $result['status'] = "success";
         } else {
             $result['status'] = "fail";
+        }
+    }
+    $result = json_encode($result);
+    echo $result;
+}
+function placeOrder($value = '')
+{
+    $cart = unserialize($_SESSION["cart"]);
+    $result = array(
+        'status' => "fail",
+        'cart' => $cart
+         );
+    if (isset($_SESSION['logged_in']) == false) {
+        $result = array(
+        'status' => "nologin",
+        'cart' => $cart
+         );
+    }
+    error_log("Inside function placing order".__FILE__);
+    if (isset($_SESSION['logged_in']) &&  $_SESSION['logged_in'] == true && !empty($cart->items)) {
+        require "connection.php";
+        try {
+                $sth = $conn->prepare('INSERT INTO orders (user_id, items,  total_cost, total_items, total_gst, order_date, order_status)
+        VALUES (:user_id, :items,  :total_cost, :total_items, :total_gst, NOW(), :order_status)');
+                $sth->execute([
+                    'user_id' => $_SESSION['user_id'],
+                    'items' => serialize($cart->items),
+                    'total_cost' => $cart->totalCost,
+                    'total_items' => $cart->totalItems,
+                    'total_gst' => $cart->totalGst,
+                    'order_status' => "complete"
+                ]);
+                $result = array(
+                    'status' => "success",
+                    'redirect' => $GLOBAL['root2']."myorders.php",
+                'cart' => $cart);
+                $cart->resetCart();
+                $_SESSION["cart"] = serialize($cart);
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
         }
     }
     $result = json_encode($result);

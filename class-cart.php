@@ -60,10 +60,11 @@ class Cart
         $itemInfo = $sth->fetch(PDO::FETCH_ASSOC);
         error_log("class");
         error_log(print_r($itemInfo, 1));
-        $itemGst= round($itemInfo['price'] *  $this->gstPercent/100, 2);
+        $itemGst= round($itemInfo['price'] * $this->items[$itemId] *  $this->gstPercent/100, 2);
         
         $this->totalGst =round($this->totalGst - $itemGst, 2);
         $this->totalCost = round($this->totalCost - $this->items[$itemId]*$itemInfo['price'] - $itemGst);
+        //deleting item from cart
         unset($this->items[$itemId]);
         error_log(print_r($this->items, 1));
         return true;
@@ -119,5 +120,13 @@ class Cart
         echo "Total Gst Percent:".$this->gstPercent."<br>";
         echo "Total Gst:".$this->totalGst."<br>";
         echo "</pre>";
+    }
+    
+    public function resetCart($value = '')
+    {
+        $this->items = [];
+        $this->totalItems = 0;
+        $this->totalCost =0;
+        $this->totalGst =0;
     }
 }
