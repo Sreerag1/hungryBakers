@@ -24,12 +24,14 @@ if (!isset($_SESSION["cart"])) {
 <html>
     <head>
         <title></title>
-        <link rel="stylesheet" type="text/css" href='<?php echo $root."css/breads.css";?>'>
-        <link rel="stylesheet" type="text/css" href='<?php echo $root."css/home.css";?>'>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href='<?php echo $root."css/bootstrap.css";?>' >
 
+        <link rel="stylesheet" type="text/css" href='<?php
+        echo $root."css/breads.css";
+        ?>'>
+        <link rel="stylesheet" type="text/css" href='<?php echo $root."css/home.css";?>'>
         <script>
             window.overlay = '<div id="overlay"><img src="<?= $root."images/ajax-loader.gif";?>"></div>';
         </script>

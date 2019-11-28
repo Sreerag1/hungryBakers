@@ -84,11 +84,11 @@ function updateCartInfor($cart) {
         data = JSON.parse(data);
         console.log(data.status);
         if (data.status === "nologin") {
-          alert("Please login to place order!"+ data);
+          alert("Please login to place order!");
         } else if(data.status === "success") {
           $( ".cart-container").html( "<div class='cart-empty'><h1>Your order has been placed successfully!</h1></div>");
         } else {
-          alert("OOPS! something went wrong!"+ data);
+          alert("OOPS! something went wrong!");
         }
 
       });

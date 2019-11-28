@@ -233,8 +233,12 @@ display: flex;
 .order-items {
   width: 100%;
 }
-.orders-container .order-items td {
-  padding: 1em;
+.orders-container .order-items td, .orders-container .order-items th {
+  padding: .8em;
+  text-align: left;
+}
+.orders-container .order-items tr{
+  border-bottom: 1px solid green;
 }
 /****** Overlay ******/
 #overlay {

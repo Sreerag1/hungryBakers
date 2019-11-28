@@ -123,7 +123,7 @@ function placeOrder($value = '')
                 ]);
                 $result = array(
                     'status' => "success",
-                    'redirect' => $GLOBAL['root2']."myorders.php",
+                    'redirect' => "myorders.php",
                 'cart' => $cart);
                 $cart->resetCart();
                 $_SESSION["cart"] = serialize($cart);

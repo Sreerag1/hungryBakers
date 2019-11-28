@@ -17,9 +17,9 @@ $userId = $_SESSION['user_id'];
 $sth = $conn->prepare("SELECT * FROM orders where user_id = $userId");
 $sth->execute();
 $orders = $sth->fetchAll(PDO::FETCH_ASSOC);
-echo "<pre>";
+// echo "<pre>";
                     // print_r($orders);
-echo "</pre>";
+// echo "</pre>";
 ?>
 <div class = "orders-container">
     <div id="overlay"><img src="<?= $root."images/loading.gif";?>"></div>
@@ -30,6 +30,7 @@ echo "</pre>";
             <th>Total Items</th>
             <th>Amount</th>
             <th>Date</th>
+            <th>Status</th>
             <th>Action</th>
         </tr>
         <?php foreach ($orders as $key => $order) : ?>
@@ -42,6 +43,7 @@ echo "</pre>";
                 <?php $date = explode(" ", $order['order_date']);
                 echo $date[0]; ?>
             </td>
+            <td><?= $order['order_status'] ?></td>
             <td>View Details</td>
         </tr>
             <?php
